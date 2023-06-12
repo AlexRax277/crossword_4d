@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Crossword 4D</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+            aria-controls="navbarContent" aria-expanded="false" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto mb-2" role="tablist" id="v-pills-tab" >
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="new-game" data-bs-toggle="tab" role="tab">Новая игра</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Продолжить игру</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    
+
+        <!-- <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" id="new-game" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="false">Новая игра</a>
+            <a class="nav-link" id="continue-game" data-toggle="pill" href="#about" role="tab" aria-controls="v-pills-profile" aria-selected="false">Продолжить игру</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#pages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Pages</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#portfolio" role="tab" aria-controls="v-pills-settings" aria-selected="false">Portfolio</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#contacts" role="tab" aria-controls="v-pills-settings" aria-selected="false">Contacts</a>
+        </div> -->
+    
+    
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade" id="new-game" role="tabpanel">
+            <div class="container-sm">
+                <div class="row">
+                    <div class="col-5 col-bordered border-primary mt-2">
+                        <p class="border border-secondary rounded-2 p-2">
+                            Приветствую! Перед тобой игра кроссворд-4D. Для начала игры выбрери режим и размер поля.
+                        </p>
+                        <div class="col-4 mt-3" id="type-game">
+                            Режим:
+                            <div class="form-check" >
+                                <input class="form-check-input" type="radio" name="game-mode" id="simple-mode" checked>
+                                <label class="form-check-label" for="simple-mode">
+                                Простой
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="game-mode" id="real-mode">
+                                <label class="form-check-label" for="real-mode">
+                                Реалистичный
+                                </label>
+                            </div>
+                        </div>
+                        <select class="form-select col-6 mt-2" id="plaing-field">
+                            <option selected>Размер поля</option>
+                            <option value="1">Меленький - 10 слов</option>
+                            <option value="2">Средний - 20 слов</option>
+                            <option value="3">Большой - 30 слов</option>
+                        </select>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-outline-secondary mt-2 me-md-2" id="accept-game-settings">Принять</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="continue-game" role="tabpanel">
+            Gogogo
+        </div>
+    </div>    
+
+    <!-- <a href="/new-game" class="link">Новая игра</a>
+    <a href="/current-game" class="link">Продолжить игру</a> -->
+    <!-- <a href="/game-settings" class="link">Параметры игры</a>
+    <a href="/game-stats" class="link">Статистика по текущей игре</a>
+    <a href="/help" class="link">Помощь</a>
+    <a href="/contacts" class="link">Контакты</a>
+    <a href="/end-game" class="link">Конец игры</a> -->
+    
+    <div class="modal fade" id="newGame-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Внимание!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+              Для начала новой игры необходимо перезаписать данные текущей, весь прогресс удалится. Вы уверены?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" id="btn-modal-denied">Нет, продолжить.</button>
+              <button type="button" class="btn btn-light" id="btn-modal-accept">Да, начать новую.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    <script src="index.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
