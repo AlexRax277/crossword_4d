@@ -1,64 +1,23 @@
-version: 'build-{build}-{branch}'
+image: Visual Studio 2015  # образ для сборки
 
-image:
-  - Visual Studio 2017
-  - Ubuntu
+stack: node 17  # окружение
 
-platform:
-  - x64
+branches:
+  only:
+    - master  # ветка git
 
-configuration:
-  - Release
-  - Debug
-
-environment:
-  APPVEYOR_YML_DISABLE_PS_LINUX: true
+cache: node_modules  # кеширование
 
 install:
-  - ps: .\install-dependency.ps1
-  - sh: ./install-dependency.sh
+  - npm install  # команда установки зависимостей
 
-for:
--
-  matrix:
-    only:
-      - image: Ubuntu
-  before_build:
-    - mkdir -p build; cd build; cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% ..
-  build_script:
-    - make
+build: off  # отключаем встроенную в appveyor систему сборки
 
- -
-   matrix:
-     only:
-       - image: Visual Studio 2017
-   before_build:
-     - cmake -G "Visual Studio 15 2017" -A x64 .
-   build:
-     project: $(APPVEYOR_PROJECT_NAME).sln
+build_script:
+  - npm run build   # команда сборки
 
 test_script:
-  - CTest -C %CONFIGURATION%
-# image: Ubuntu1804  # образ для сборки
-
-# stack: node 17  # окружение
-
-# branches:
-#   only:
-#     - master  # ветка git
-
-# cache: node_modules  # кеширование
-
-# install:
-#   - npm install  # команда установки зависимостей
-
-# build: off  # отключаем встроенную в appveyor систему сборки
-
-# build_script:
-#   - npm run build   # команда сборки
-
-# test_script:
-#   - npm run lint # скрипт запуска
+  - npm run lint # скрипт запуска
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
