@@ -3,17 +3,31 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
+  target: 'web',
 
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: 'auto',
+    // assetModuleFilename: 'assets/[hash][ext][query]'
   },
 
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
       },
       {
         test: /\.csv$/,
@@ -21,15 +35,20 @@ module.exports = {
         options: {
           dynamicTyping: true,
           header: true,
-          skipEmptyLines: true
-        }
+          skipEmptyLines: true,
+        },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+        type: 'asset/resource',
       },
     ],
   },
-  
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/icon.png',
     }),
   ],
 
