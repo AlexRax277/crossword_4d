@@ -5,6 +5,7 @@ import errorSound from '../Audio/error.mp3';
 import successSound from '../Audio/success.mp3';
 import penSound from '../Audio/pen.mp3';
 import SetAttributes from '../Other/SetAttributes.js';
+import ModalNewGame from '../TabNewGame/ModalNewGame.js';
 
 const WordUpdate = (id, challenger, gameType, msg) => {
   const str = FindStr(id);
@@ -25,7 +26,9 @@ const WordUpdate = (id, challenger, gameType, msg) => {
       localStorage.setItem(`WordID - ${match.pairId}`, JSON.stringify(pair));
 
       const matchStr = FindStr(String(match.pairId));
-      matchStr.childNodes[match.numPair].textContent = challenger.split('')[match.numAnswer - 1];
+      if (matchStr.childNodes[match.numPair]) {
+        matchStr.childNodes[match.numPair].textContent = challenger.split('')[match.numAnswer - 1];
+      }
     });
     GameInfo();
   };
@@ -34,6 +37,9 @@ const WordUpdate = (id, challenger, gameType, msg) => {
     if (challenger === wordInfo.answer) {
       wordInfo.solved = true;
       localStorage.setItem(`WordID - ${id}`, JSON.stringify(wordInfo));
+      const solvedWords = JSON.parse(localStorage.getItem('SolvedWords'));
+      solvedWords.push(challenger);
+      localStorage.setItem('SolvedWords', JSON.stringify(solvedWords));
       msg.textContent = 'Правильно!';
       insertWord();
       AudioHandler(successSound);
@@ -44,6 +50,10 @@ const WordUpdate = (id, challenger, gameType, msg) => {
   } else {
     insertWord();
     AudioHandler(penSound);
+  }
+  if (JSON.parse(localStorage.getItem('Data')).length === JSON.parse(localStorage.getItem('SolvedWords')).length) {
+    ModalNewGame();
+    document.querySelector('.modal-body').textContent = 'Поздравляем! Вы победили';
   }
 };
 

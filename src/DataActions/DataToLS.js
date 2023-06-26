@@ -12,6 +12,7 @@ const DataToLS = () => {
     });
     const fieldSize = document.getElementById('plaing-field').value;
     localStorage.setItem('FieldSize', fieldSize);
+    localStorage.setItem('SolvedWords', '[]');
     GetData(fieldSize);
     TabChoise('continue-game');
   });

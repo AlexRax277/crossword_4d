@@ -17,6 +17,7 @@
       "no-loop-func":"off",
       "array-callback-return":"off",
       "no-param-reassign":"off",
-      "no-undef":"off"
+      "no-undef":"off",
+      "import/no-cycle": "off"
     }
   }
