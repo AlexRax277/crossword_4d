@@ -5,6 +5,7 @@ const CreateTable = () => {
   const tBody = document.createElement('tbody');
   table.appendChild(tBody);
   table.classList = 'table col-sm-4';
+  table.id = 'game-field';
 
   GetDataFromLS().map((el) => {
     const tr = document.createElement('tr');

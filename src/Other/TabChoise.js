@@ -17,7 +17,7 @@ const TabChoise = (tab) => {
     link.classList.remove('active');
     document.getElementById(tab).classList.add('active');
   });
-  CurrentGame();
+  document.getElementById('game-field') ? null : CurrentGame();
 };
 
 export default TabChoise;

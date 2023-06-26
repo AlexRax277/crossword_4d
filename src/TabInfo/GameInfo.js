@@ -12,7 +12,7 @@ const GameInfo = () => {
     const newString = document.createElement('tr');
     const openSymbols = [];
     el.openSymbols.forEach((symbol) => {
-      openSymbols.push(`${symbol}-ая буква ${el.answer.split('')[symbol - 1]}`);
+      openSymbols.push(`${symbol[0]}-ая буква ${symbol[1]}`);
     });
 
     newString.innerHTML = `<th scope="row">${el.id}</th>

@@ -24,6 +24,16 @@ window.addEventListener('click', (e) => {
   }
 });
 
+setInterval(() => {
+  document.querySelectorAll('.word').forEach((word) => {
+    word.querySelectorAll('.letter').forEach((letter) => {
+      if (letter.textContent.length > 1 && letter.nextSibling) {
+        letter.nextSibling.remove();
+      }
+    });
+  });
+}, 1000);
+
 NewGame();
 CurrentGame();
 setInterval(() => { GameInfo(); }, 10 * 1000);
