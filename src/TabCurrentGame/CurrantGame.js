@@ -5,9 +5,9 @@ import GetDataFromLS from './GetDataFromLS.js';
 
 const CurrentGame = () => {
   const data = localStorage.getItem('Data');
-  const mock = document.createElement('h6');
-  mock.classList = 'mock col-sm m-5';
-  mock.textContent = 'Для начала игры перейдите во вкладку "Новая игра" и задайте необходимые параметры';
+  const mock = document.createElement('div');
+  mock.classList = 'mock col-sm-8 m-3';
+  mock.textContent = 'Для начала игры перейдите во вкладку "Новая игра" и задайте необходимые параметры.';
 
   const tab = document.querySelector('.tab-cont');
   tab.innerHTML = '';

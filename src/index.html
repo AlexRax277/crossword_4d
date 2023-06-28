@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-            <h4><a href="" class="navbar-brand" id="navbar-brand">Crossword 4D</a></h4>
+            <h2><a href="" class="navbar-brand" id="navbar-brand">Crossword 4D</a></h2>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
                 aria-controls="navbarContent" aria-expanded="false" >
                 <span class="navbar-toggler-icon"></span>
@@ -20,16 +20,16 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mr-auto mb-2" role="tablist" id="v-pills-tab" >
                     <li class="nav-item">
-                        <h6><a href="" class="nav-link" id="new-game" data-bs-toggle="tab" role="tab">Новая игра</a></h6>
+                        <a href="" class="nav-link" id="new-game" data-bs-toggle="tab" role="tab">Новая игра</a>
                     </li>
                     <li class="nav-item">
-                        <h6><a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Продолжить игру</a></h6>
+                        <a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Продолжить игру</a>
                     </li>
                     <li class="nav-item">
-                        <h6><a href="" class="nav-link" id="info" data-bs-toggle="tab" role="tab">Инфо</a></h6>
+                        <a href="" class="nav-link" id="info" data-bs-toggle="tab" role="tab">Инфо</a>
                     </li>
                     <li class="nav-item">
-                        <h6><a href="" class="nav-link" id="contacts" data-bs-toggle="tab" role="tab">Контакты</a></h6>
+                        <a href="" class="nav-link" id="contacts" data-bs-toggle="tab" role="tab">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -49,10 +49,10 @@
                 <div class="row">
                     <div class="col-lg-4 mt-2">
                         <p class="p-1">
-                            <h6>Добро пожаловать в Кроссворд 4D! Для начала игры выбрерите режим и размер поля.</h6>
+                            <span>Добро пожаловать в Кроссворд 4D! Для начала игры выбрерите режим и размер поля.</span>
                         </p>
                         <div class="mt-4" id="type-game">
-                            <h6>Режим:</h6>
+                            <div>Режим:</div>
                             <div class="form-check" >
                                 <input class="form-check-input" type="radio" name="game-mode" id="simple-mode" checked>
                                 <label class="form-check-label" for="simple-mode">
@@ -66,7 +66,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="mt-4"><h6>Размер поля:</h6></div>
+                        <div class="mt-4">Размер поля:</div>
                         <select class="form-select" id="plaing-field">
                             <option selected value="1">Меленький - 10 слов</option>
                             <option value="2">Средний - 20 слов</option>
@@ -82,14 +82,15 @@
         <div class="tab-pane fade" id="tab-continue-game" role="tabpanel">
            <div class="container-sm">
                 <div class="row position-relative">
-                    <h5>Игровое поле</h5>
+                    <h3>Игровое поле</h3>
                     <div class="tab-cont col-sm-6">
                     </div>
                     <div class="dialog col-5 position-fixed top-20 start-50">
-                        <h5>Диалоговое окно</h5>
-                        <h6 class="dialog-info" id="dialog-info">
-                        </h6>
-                        <form class="row g-3 mt-4" id="form">
+                        <div class="dialog-info" id="dialog-info">
+                            <h4 class="question col mt-2 text-break"></h4>
+                            <span class="clue clue col mt-2"></span>
+                        </div>
+                        <form class="row g-3 mt-3" id="form">
                         </form>
                     </div>
                 </div>
@@ -99,11 +100,11 @@
             <div class="container-sm">
                 <div class="row">
                     <div class="col-auto mt-2" style="width: 100%">
-                        <h6>Игровой прогресс</h6>
+                        <h3>Игровой прогресс</h3>
                         <div class="progress" role="progressbar" aria-label="progressbar-label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar bg-success" id="progress" style="width: 0%">0%</div>
                         </div>
-                        <h6 class="mt-5">Информация по игре</h6>
+                        <h3 class="mt-5">Информация по игре</h3>
                         <table class="table table-success table-striped align-middle text-center">
                             <thead>
                                 <tr>
@@ -143,14 +144,36 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title fs-5" id="exampleModalLabel">Внимание!</h4>
-              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-close"></button>
             </div>
-            <h6 class="modal-body">
+            <div class="modal-body">
               Для начала новой игры необходимо перезаписать данные текущей, весь прогресс удалится. Вы уверены?
-            </h6>
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-light" id="btn-modal-denied">Нет, продолжить.</button>
               <button type="button" class="btn btn-light" id="btn-modal-accept">Да, начать новую.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="endGame-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Поздравляю!</h4>
+              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-end-close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы победили! Для начала новой игры, не изменяя параметров 
+                режима и размера поля, нажмите "продолжить" (Внимание: весь процесс текущей игры не сохранится).</p> 
+                <p>Для просмотра результатов текущей игры нажмите "завершить".</p> 
+                <p>Если хотите поменять режим игры и/или размер поля, перейдите во вкладку 
+                "Новая игра" после закрытия текущего диалогового окна.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" id="btn-modal-end-denied">Завершить</button>
+              <button type="button" class="btn btn-light" id="btn-modal-end-accept">Продолжить</button>
             </div>
           </div>
         </div>

@@ -4,8 +4,9 @@ import AudioHandler from '../Other/AudioHandler.js';
 import errorSound from '../Audio/error.mp3';
 import successSound from '../Audio/success.mp3';
 import penSound from '../Audio/pen.mp3';
+import victorySound from '../Audio/victory.mp3';
 import SetAttributes from '../Other/SetAttributes.js';
-import ModalNewGame from '../TabNewGame/ModalNewGame.js';
+import EndGame from '../TabInfo/EndGame.js';
 
 const WordUpdate = (id, challenger, gameType, msg) => {
   const str = FindStr(id);
@@ -52,8 +53,10 @@ const WordUpdate = (id, challenger, gameType, msg) => {
     AudioHandler(penSound);
   }
   if (JSON.parse(localStorage.getItem('Data')).length === JSON.parse(localStorage.getItem('SolvedWords')).length) {
-    ModalNewGame();
-    document.querySelector('.modal-body').textContent = 'Поздравляем! Вы победили';
+    setTimeout(() => {
+      AudioHandler(victorySound);
+      EndGame();
+    }, 3000);
   }
 };
 

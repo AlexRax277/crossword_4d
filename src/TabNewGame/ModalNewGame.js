@@ -14,7 +14,7 @@ const ModalNewGame = () => {
   modal.show();
   const btnDenied = document.getElementById('btn-modal-denied');
   const btnAccept = document.getElementById('btn-modal-accept');
-  const btnClose = document.querySelector('.btn-close');
+  const btnClose = document.getElementById('btn-close');
 
   [btnAccept, btnDenied, btnClose].forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -25,7 +25,8 @@ const ModalNewGame = () => {
         modal.hide();
         localStorage.clear();
         const field = document.getElementById('game-field');
-        document.getElementById('dialog-info').textContent = '';
+        document.querySelector('.question').textContent = '';
+        document.querySelector('.clue').textContent = '';
         const form = document.getElementById('form').childNodes[0];
         form ? form.remove() : null;
         field ? field.remove() : null;

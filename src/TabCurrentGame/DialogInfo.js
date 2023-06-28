@@ -1,13 +1,19 @@
 import Input from './Input.js';
 
 const DialogInfo = () => {
-  const tag = document.getElementById('dialog-info');
+  const questionTag = document.querySelector('.question');
+  const clue = document.querySelector('.clue');
   const words = document.querySelectorAll('.word');
+  const firstWord = JSON.parse(localStorage.getItem('WordID - 1'));
+  if (firstWord) {
+    questionTag.textContent = `1.${firstWord.question}`;
+    Input(firstWord.answer.length, 1);
+  }
 
   words.forEach((word) => {
     word.addEventListener('click', () => {
       const wordInfo = JSON.parse(localStorage.getItem(`WordID - ${word.children[0].textContent}`));
-      const question = `${wordInfo.id}. ${wordInfo.question}`;
+      const question = `${wordInfo.id}.${wordInfo.question}`;
       const symbols = wordInfo.answer.length;
 
       let letters = [];
@@ -17,13 +23,10 @@ const DialogInfo = () => {
         letterNum += 1;
       });
       letters = `Подсказка: ${letters.join(', ')}`;
-      tag.textContent = question;
+      questionTag.textContent = question;
 
       if (letters.length > 11 && !wordInfo.solved) {
-        const clue = document.createElement('div');
-        clue.classList = 'col mt-2';
         clue.textContent = letters;
-        tag.appendChild(clue);
       }
       Input(symbols, word.id);
     });
