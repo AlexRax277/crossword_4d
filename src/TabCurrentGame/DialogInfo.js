@@ -15,6 +15,7 @@ const DialogInfo = () => {
       const wordInfo = JSON.parse(localStorage.getItem(`WordID - ${word.children[0].textContent}`));
       const question = `${wordInfo.id}.${wordInfo.question}`;
       const symbols = wordInfo.answer.length;
+      clue.textContent = '';
 
       let letters = [];
       let letterNum = 1;
