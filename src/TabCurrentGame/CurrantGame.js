@@ -1,3 +1,4 @@
+import ClearField from './ClearField.js';
 import CreateTable from './CreateTable.js';
 import DialogInfo from './DialogInfo.js';
 import FindStr from './FindStr.js';
@@ -27,6 +28,7 @@ const CurrentGame = () => {
   }
 
   DialogInfo();
+  ClearField();
 };
 
 export default CurrentGame;

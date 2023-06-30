@@ -9,7 +9,7 @@ const Input = (symbols, id) => {
 
   form.innerHTML = `<div class="input-group flex-nowrap">
                             <span class="input-group-text" id="addon-wrapping">${`${symbols} ${ending}`}</span>
-                            <input type="text" class="form-control" id="challenger" placeholder="Введите слово" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" id="challenger" style="width: 15px;" placeholder="Введите слово" aria-describedby="addon-wrapping">
                             <button type="submit" class="btn btn-outline-secondary" id="btn-challenger">Принять</button>
                         </div>
                         <div class="msg col-sm-auto">    
