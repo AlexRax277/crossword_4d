@@ -30,6 +30,7 @@ const GameInfo = () => {
   }
   progress.style.width = solvedWords;
   progress.textContent = solvedWords;
+  document.querySelector('.invis').textContent = `На текущий момент разгадано ${solvedWords} слов.`;
 };
 
 export default GameInfo;

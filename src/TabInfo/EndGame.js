@@ -6,6 +6,10 @@ const EndGame = () => {
   const options = { backdrop: 'static', focus: true, keyboard: false };
   const modal = new bootstrap.Modal(modalTag, options);
   modal.show();
+  modalTag.addEventListener('shown.bs.modal', () => {
+    modalTag.querySelector('.modal-dialog').focus();
+  });
+
   const btnDenied = document.getElementById('btn-modal-end-denied');
   const btnAccept = document.getElementById('btn-modal-end-accept');
   const btnClose = document.getElementById('btn-end-close');

@@ -12,6 +12,10 @@ const ModalNewGame = () => {
   const options = { backdrop: 'static', focus: true, keyboard: false };
   const modal = new bootstrap.Modal(modalTag, options);
   modal.show();
+  modalTag.addEventListener('shown.bs.modal', () => {
+    modalTag.querySelector('.modal-dialog').focus();
+  });
+
   const btnDenied = document.getElementById('btn-modal-denied');
   const btnAccept = document.getElementById('btn-modal-accept');
   const btnClose = document.getElementById('btn-close');

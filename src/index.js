@@ -10,6 +10,7 @@ import SetAttributes from './Other/SetAttributes.js';
 const iconBrand = document.getElementById('icon-brand');
 const image = new Image();
 image.src = Icon;
+image.alt = 'Бесцветный трехмерный куб, распадающийся на отдельные кубические фрагменты одиннакового размера';
 image.style.width = '30%';
 iconBrand.appendChild(image);
 

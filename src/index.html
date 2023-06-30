@@ -22,7 +22,7 @@
                         <a href="" class="nav-link" id="new-game" data-bs-toggle="tab" role="tab">Новая игра</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Продолжить игру</a>
+                        <a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Текущая игра</a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link" id="info" data-bs-toggle="tab" role="tab">Прогресс</a>
@@ -35,7 +35,7 @@
         </div>
     </nav>
     <div class="modal fade" id="newGame-modal">
-        <div class="modal-dialog modal-fullscreen-sm-down">
+        <div class="modal-dialog" tabindex="0">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title fs-5" id="exampleModalLabel">Внимание!</h4>
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="modal fade" id="endGame-modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog" tabindex="0">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title fs-5" id="exampleModalLabel">Поздравляю!</h4>
@@ -99,26 +99,35 @@
         <div class="tab-pane fade" id="tab-new-game" role="tabpanel">
             <div class="container-sm">
                 <div class="row">
-                    <div class="col-lg-4 mt-2">
-                        <p class="p-1">
-                            <span>Для начала игры выберите режим и размер поля.</span>
-                        </p>
-                        <div class="mt-4" id="type-game">
+                    <div class="col-lg-4">
+                            <h3>Выберите режим и размер поля.</h3>
+                            <h4>Правила простого режима.</h4>
+                            <p>
+                                Этот режим можно описать как гибрид кроссворда и викторины.
+                                Если Вам удастся верно угадать слово, Вы получите оповещение об этом.
+                            </p>
+                            <h4>Правила реалистичного режима.</h4>
+                            <p> 
+                                В этом режиме Вам предоставлена полная свобода действий, как на листе газеты. 
+                                Вы можете переписывать слова и исправлять их столько раз, сколько захотите. Когда все поля будут заполнены, 
+                                у Вас появится возможность проверить, разгаданы все слова в кроссворде правильно или нет.
+                            </p>
+                        <div class="mt-2" id="type-game">
                             <div>Режим:</div>
                             <div class="form-check" >
                                 <input class="form-check-input" type="radio" name="game-mode" id="simple-mode" checked>
                                 <label class="form-check-label" for="simple-mode">
-                                Простой, сразу проверяем ответ
+                                Простой
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="game-mode" id="real-mode">
                                 <label class="form-check-label" for="real-mode">
-                                Реалистичный, как в классическом кроссворде
+                                Реалистичный
                                 </label>
                             </div>
                         </div>
-                        <div class="mt-4">Размер поля:</div>
+                        <div class="mt-2">Размер поля:</div>
                         <select class="form-select" id="plaing-field">
                             <option selected value="1">Меленький - 10 слов</option>
                             <option value="2">Средний - 20 слов</option>
@@ -156,7 +165,8 @@
                         <div class="progress" role="progressbar" aria-label="progressbar-label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar bg-success" id="progress" style="width: 0%">0%</div>
                         </div>
-                        <h3 class="mt-5">Информация по игре</h3>
+                        <div class="invis"></div>
+                        <h3 class="mt-2">Информация по игре</h3>
                         <table class="table table-success table-striped align-middle text-center">
                             <thead>
                                 <tr>
