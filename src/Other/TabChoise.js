@@ -12,11 +12,6 @@ const TabChoise = (tab) => {
     document.getElementById(`tab-${tab}`).classList.add('show', 'active');
   });
 
-  const links = document.querySelectorAll('.nav-link');
-  links.forEach((link) => {
-    link.classList.remove('active');
-    document.getElementById(tab).classList.add('active');
-  });
   document.getElementById('game-field') ? null : CurrentGame();
 };
 
