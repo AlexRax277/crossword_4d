@@ -50,26 +50,7 @@
             </div>
           </div>
         </div>
-    </div>
-    <div class="modal fade" id="endGame-modal">
-        <div class="modal-dialog" tabindex="0">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title fs-5" id="exampleModalLabel">Поздравляю!</h4>
-              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-end-close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Поздравляю с победой! Нажмите "Продолжить" для начала новой игры с теми же параметрами.</p> 
-                <p>Нажмите "Завершить", чтобы просмотреть результаты текущей игры. </p> 
-                <p>Чтобы изменить режим игры и/или размер поля, перейдите во вкладку "Новая игра" после закрытия окна. Удачи!</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" id="btn-modal-end-denied">Завершить</button>
-              <button type="button" class="btn btn-light" id="btn-modal-end-accept">Продолжить</button>
-            </div>
-          </div>
-        </div>
-    </div>     
+    </div>    
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="tab-navbar-brand" role="tabpanel">
             <div class="container-lg">
@@ -100,18 +81,34 @@
             <div class="container-sm">
                 <div class="row">
                     <div class="col-lg-4">
-                            <h3>Выберите режим и размер поля.</h3>
-                            <h4>Правила простого режима.</h4>
-                            <p>
-                                Этот режим можно описать как гибрид кроссворда и викторины.
-                                Если Вам удастся верно угадать слово, Вы получите оповещение об этом.
+                            <h3 class="text-center">Выберите режим и размер поля.</h3>
+                            <p class="row" style="justify-content: space-between;">
+                                <span class="col-5 card text-center" data-bs-toggle="collapse" href="#Collapse1" role="button" aria-expanded="false" aria-controls="Collapse1">Правила простого режима.</span>
+                                <span class="col-5 card text-center" data-bs-toggle="collapse" href="#Collapse2" role="button" aria-expanded="false" aria-controls="Collapse2">Правила реалистичного режима.</span>
                             </p>
-                            <h4>Правила реалистичного режима.</h4>
-                            <p> 
-                                В этом режиме Вам предоставлена полная свобода действий, как на листе газеты. 
-                                Вы можете переписывать слова и исправлять их столько раз, сколько захотите. Когда все поля будут заполнены, 
-                                у Вас появится возможность проверить, разгаданы все слова в кроссворде правильно или нет.
-                            </p>
+                            <div class="row">
+                                <div class="col-6">
+                                  <div class="collapse multi-collapse" id="Collapse1">
+                                    <div class="card card-body">
+                                        <p>
+                                            Этот режим можно описать как гибрид кроссворда и викторины.
+                                            Если Вам удастся верно угадать слово, Вы получите оповещение об этом.
+                                        </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="collapse multi-collapse" id="Collapse2">
+                                    <div class="card card-body">
+                                        <p> 
+                                            В этом режиме Вам предоставлена полная свобода действий, как на листе газеты. 
+                                            Вы можете переписывать слова и исправлять их столько раз, сколько захотите. Когда все поля будут заполнены, 
+                                            у Вас появится возможность проверить, разгаданы все слова в кроссворде правильно или нет.
+                                        </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         <div class="mt-2" id="type-game">
                             <div>Режим:</div>
                             <div class="form-check" >
@@ -146,9 +143,16 @@
                     <h3>Игровое поле</h3>
                     <div class="col-5">
                         <div class="col-auto">
-                            <button type="button" class="btn btn-outline-secondary float-end" id="clear-field">Очистить поле</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm disabled float-end pb-pt-0" id="clear-field">
+                                Очистить поле
+                                <span class="invisible position-absolute">Удаление всех введенных значений</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm disabled float-end pb-pt-0" id="check-field" style="margin-right: 5px;">
+                                Проверить значения
+                                <span class="invisible position-absolute">Проверка всех значений на соответствие</span>
+                            </button>
                         </div>
-                            <div class="tab-cont col-auto">    
+                        <div class="tab-cont col-auto">    
                         </div>
                     </div>
                     <div class="dialog col-3 position-fixed top-20 start-50">
@@ -204,7 +208,26 @@
                  </div>
             </div>
          </div>
-    </div>    
+    </div>
+    <div class="modal fade" id="endGame-modal">
+        <div class="modal-dialog" tabindex="0">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Поздравляем с победой! </h4>
+              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-end-close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Нажмите "Продолжить" для начала новой игры с теми же параметрами.</p> 
+                <p>Нажмите "Завершить", чтобы просмотреть результаты текущей игры. </p> 
+                <p>Чтобы изменить режим игры и/или размер поля, перейдите во вкладку "Новая игра" после закрытия окна. Удачи!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" id="btn-modal-end-denied">Завершить</button>
+              <button type="button" class="btn btn-light" id="btn-modal-end-accept">Продолжить</button>
+            </div>
+          </div>
+        </div>
+    </div>     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

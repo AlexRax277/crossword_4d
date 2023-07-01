@@ -4,33 +4,39 @@ import AudioHandler from '../Other/AudioHandler.js';
 import errorSound from '../Audio/error.mp3';
 import successSound from '../Audio/success.mp3';
 import penSound from '../Audio/pen.mp3';
-import victorySound from '../Audio/victory.mp3';
 import SetAttributes from '../Other/SetAttributes.js';
-import EndGame from '../TabInfo/EndGame.js';
+import WinCondition from '../TabInfo/WinCondition.js';
 
 const WordUpdate = (id, challenger, gameType, msg) => {
   const str = FindStr(id);
   const wordInfo = JSON.parse(localStorage.getItem(`WordID - ${id}`));
 
   const insertWord = () => {
-    // for (let i = 1; i <= challenger.length; i++) {
-    //   str.childNodes[i].textContent = challenger.split('')[i - 1];
-    // }
-
     SetAttributes(str.childNodes[1], { colspan: `${challenger.length}`, status: 'solved' });
     str.childNodes[1].textContent = challenger;
+
+    if (gameType === 'real-mode') {
+      wordInfo.challenger = challenger;
+    }
 
     wordInfo.matches.forEach((match) => {
       const pair = JSON.parse(localStorage.getItem(`WordID - ${match.pairId}`));
       const newOpenSym = [match.numPair, challenger.split('')[match.numAnswer - 1]];
-      !pair.openSymbols.includes(newOpenSym) ? pair.openSymbols.push(newOpenSym) : null;
-      localStorage.setItem(`WordID - ${match.pairId}`, JSON.stringify(pair));
+      const openNumSym = pair.openSymbols.map((sym) => sym[0]);
+      !openNumSym.includes(match.numPair) ? pair.openSymbols.push(newOpenSym) : null;
 
       const matchStr = FindStr(String(match.pairId));
-      if (matchStr.childNodes[match.numPair]) {
+      if (matchStr.childNodes[1].textContent.length < 2) {
         matchStr.childNodes[match.numPair].textContent = challenger.split('')[match.numAnswer - 1];
       }
+      if (gameType === 'real-mode' && matchStr.childNodes.length === 2) {
+        const listSymbols = matchStr.childNodes[1].textContent.split('');
+        listSymbols[match.numPair - 1] = challenger.split('')[match.numAnswer - 1];
+        pair.challenger = listSymbols.join('');
+      }
+      localStorage.setItem(`WordID - ${match.pairId}`, JSON.stringify(pair));
     });
+    localStorage.setItem(`WordID - ${id}`, JSON.stringify(wordInfo));
     GameInfo();
   };
 
@@ -39,25 +45,24 @@ const WordUpdate = (id, challenger, gameType, msg) => {
       wordInfo.solved = true;
       localStorage.setItem(`WordID - ${id}`, JSON.stringify(wordInfo));
       const solvedWords = JSON.parse(localStorage.getItem('SolvedWords'));
-      solvedWords.push(challenger);
+      !solvedWords.includes(challenger) ? solvedWords.push(challenger) : null;
       localStorage.setItem('SolvedWords', JSON.stringify(solvedWords));
       msg.textContent = 'Правильно!';
       insertWord();
-      AudioHandler(successSound);
+      setTimeout(() => {
+        AudioHandler(successSound);
+      }, 300);
     } else {
       msg.textContent = 'Нет, подумайте еще...';
-      AudioHandler(errorSound);
+      setTimeout(() => {
+        AudioHandler(errorSound);
+      }, 300);
     }
   } else {
     insertWord();
     AudioHandler(penSound);
   }
-  if (JSON.parse(localStorage.getItem('Data')).length === JSON.parse(localStorage.getItem('SolvedWords')).length) {
-    setTimeout(() => {
-      AudioHandler(victorySound);
-      EndGame();
-    }, 3000);
-  }
+  WinCondition();
 };
 
 export default WordUpdate;

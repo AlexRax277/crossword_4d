@@ -13,7 +13,9 @@ const NewGame = () => {
   document.getElementById('new-game').addEventListener('click', () => {
     if (localStorage.getItem('GameType') && localStorage.getItem('FieldSize')) {
       ModalNewGame();
-      AudioHandler(modalSound);
+      setTimeout(() => {
+        AudioHandler(modalSound);
+      }, 300);
     } else { DataToLS(); }
   });
 };

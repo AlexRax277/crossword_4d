@@ -22,7 +22,9 @@ const Input = (symbols, id) => {
     const msg = form.querySelector('.msg');
     if (challenger.length !== symbols || !pattern.test(challenger)) {
       msg.textContent = 'Проверьте количество введенных букв.';
-      AudioHandler(errorSound);
+      setTimeout(() => {
+        AudioHandler(errorSound);
+      }, 300);
     } else {
       WordUpdate(id, challenger, gameType, msg);
     }

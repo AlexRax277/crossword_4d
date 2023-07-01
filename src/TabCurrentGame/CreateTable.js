@@ -31,6 +31,7 @@ const CreateTable = () => {
   const tab = document.querySelector('.tab-cont');
   mock ? mock.remove() : null;
   !tab.querySelector('.table') ? tab.appendChild(table) : null;
+  document.getElementById('clear-field').classList.remove('disabled');
 };
 
 export default CreateTable;

@@ -1,4 +1,5 @@
 import ClearField from './ClearField.js';
+import CheckField from './CheckField.js';
 import CreateTable from './CreateTable.js';
 import DialogInfo from './DialogInfo.js';
 import FindStr from './FindStr.js';
@@ -29,6 +30,7 @@ const CurrentGame = () => {
 
   DialogInfo();
   ClearField();
+  CheckField();
 };
 
 export default CurrentGame;

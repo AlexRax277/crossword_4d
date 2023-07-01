@@ -5,12 +5,12 @@ import clickSound from './Audio/click.mp3';
 import GameInfo from './TabInfo/GameInfo.js';
 import TabChoise from './Other/TabChoise.js';
 import Icon from './icon.png';
-import SetAttributes from './Other/SetAttributes.js';
+import MainFoo from './TabNewGame/MainFoo.js';
 
 const iconBrand = document.getElementById('icon-brand');
 const image = new Image();
 image.src = Icon;
-image.alt = 'Бесцветный трехмерный куб, распадающийся на отдельные кубические фрагменты одиннакового размера';
+image.alt = 'Бесцветный трехмерный куб, распадающийся на отдельные кубические фрагменты одинакового размера';
 image.style.width = '30%';
 iconBrand.appendChild(image);
 
@@ -26,20 +26,7 @@ window.addEventListener('click', (e) => {
   }
 });
 
-setInterval(() => {
-  document.querySelectorAll('.word').forEach((word) => {
-    const wordInfo = JSON.parse(localStorage.getItem(`WordID - ${word.childNodes[0].textContent}`));
-    word.querySelectorAll('.letter').forEach((letter) => {
-      if (letter.textContent.length > 1 && letter.nextSibling) {
-        letter.nextSibling.remove();
-      }
-    });
-    if (wordInfo.solved) {
-      SetAttributes(word.childNodes[1], { colspan: `${wordInfo.answer.length}`, status: 'solved' });
-      word.childNodes[1].textContent = wordInfo.answer;
-    }
-  });
-}, 1);
+MainFoo();
 
 NewGame();
 CurrentGame();

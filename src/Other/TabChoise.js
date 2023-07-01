@@ -8,6 +8,7 @@ import CurrentGame from '../TabCurrentGame/CurrantGame.js';
 const TabChoise = (tab) => {
   [...document.querySelectorAll('.nav-link'), document.querySelector('.navbar-brand')].forEach((link) => {
     link.classList.remove('active');
+    link.id === tab ? link.classList.add('active') : null;
   });
   const tabs = document.querySelectorAll('.tab-pane');
   tabs.forEach((e) => {

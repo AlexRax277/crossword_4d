@@ -20,7 +20,7 @@ const DialogInfo = () => {
       let letters = [];
       let letterNum = 1;
       word.querySelectorAll('.letter').forEach((letter) => {
-        letter.textContent ? letters.push(`${letterNum}-ая буква ${letter.textContent}`) : null;
+        letter.textContent.length === 1 ? letters.push(`${letterNum}-ая буква ${letter.textContent}`) : null;
         letterNum += 1;
       });
       letters = `Подсказка: ${letters.join(', ')}`;
