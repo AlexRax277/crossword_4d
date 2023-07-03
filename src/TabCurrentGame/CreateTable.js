@@ -32,6 +32,7 @@ const CreateTable = () => {
   mock ? mock.remove() : null;
   !tab.querySelector('.table') ? tab.appendChild(table) : null;
   document.getElementById('clear-field').classList.remove('disabled');
+  localStorage.getItem('GameType') === 'simple-mode' ? document.getElementById('check-field').classList.add('invisible') : null;
 };
 
 export default CreateTable;

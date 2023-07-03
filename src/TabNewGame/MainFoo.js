@@ -33,7 +33,8 @@ const MainFoo = () => {
     if (JSON.parse(localStorage.getItem('Data')) && k === JSON.parse(localStorage.getItem('Data')).length) {
       document.getElementById('check-field').classList.remove('disabled');
     }
-  }, 50);
+    window.goatcounter.visit_count({ append: 'body' });
+  }, 5000);
 };
 
 export default MainFoo;

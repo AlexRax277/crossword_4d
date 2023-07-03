@@ -33,6 +33,7 @@ const ModalNewGame = () => {
         document.querySelector('.clue').textContent = '';
         document.getElementById('clear-field').classList.add('disabled');
         document.getElementById('check-field').classList.add('disabled');
+        document.getElementById('check-field').classList.remove('invisible');
         const form = document.getElementById('form').childNodes[0];
         form ? form.remove() : null;
         field ? field.remove() : null;
