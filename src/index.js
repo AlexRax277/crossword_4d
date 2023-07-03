@@ -27,7 +27,13 @@ window.addEventListener('click', (e) => {
 });
 
 MainFoo();
-
 NewGame();
 CurrentGame();
 setInterval(() => { GameInfo(); }, 5 * 1000);
+
+async function fetchGoatCounter() {
+  const response = await fetch('https://crossword4d.goatcounter.com/count?p=/');
+  const data = await response.json();
+  document.getElementById('goatcounter-counter').innerText = data.count;
+}
+fetchGoatCounter();

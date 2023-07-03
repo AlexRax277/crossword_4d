@@ -33,11 +33,6 @@ const MainFoo = () => {
     if (JSON.parse(localStorage.getItem('Data')) && k === JSON.parse(localStorage.getItem('Data')).length) {
       document.getElementById('check-field').classList.remove('disabled');
     }
-    if (window.goatcounter) {
-      goatcounter.count({
-        site: 'crossword4d',
-      });
-    }
   }, 50);
 };
 
