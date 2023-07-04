@@ -1,47 +1,9 @@
 /**
- * Ниже приведен алгоритм (закомментирован) для работы с исходными данными через файловую систему.
+ * Функция создания выборки из экземпляров класса Word и занесения их в локальное хранилище.
+ * @param {string} fieldSize - размер поля (меленький, средний или большой).
+ * Размер поля также определяет количество слов в выборке и количество максимальных пересечений для каждого из слов.
+ * В локальное хранилище вносятся как слова по отдельности, так и общая база целиком для удобства использования.
  */
-
-// import fs from 'fs';
-// import readline from 'readline';
-
-// const stream = fs.createReadStream("./questions.csv");
-// const reader = readline.createInterface({ input: stream });
-
-// async function GetData(n) {
-//     let allQ = [];
-//     let currQ = [];
-//     const data = await new Promise((resolve) => {
-//         reader.on("line", row => {
-//             allQ.push(row.split(";"));
-
-//         });
-
-//         reader.on("close", () => {
-//             for (let i = 0; i < n; i++) {
-//                 currQ.push(allQ[getRandomIntInclusive(0, allQ.length - 1)]);
-//             }
-//             return resolve(currQ);
-//         });
-//     });
-//     return data;
-// };
-
-// GetData(10).then(data => {
-//    data = data.map(e => { return new Word(e[0], e[1], getRandomIntInclusive(2, 3))});
-
-//    data.forEach(element => {
-//       const curList = data.filter(e => e !== element);
-//       curList.forEach(e => {
-//           element.addMatch(e);
-//       })
-//    });
-
-//    data.forEach(e => {
-//       console.log(e)
-//    })
-
-// });
 
 import getRandomIntInclusive from './genRandomNum.js';
 import data from './questions.csv';

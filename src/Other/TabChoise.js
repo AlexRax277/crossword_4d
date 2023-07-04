@@ -1,6 +1,5 @@
 /**
  * Функция для переключения между вкладками
- * без использования навигационных ссылок
  * @param {string} tab - id вкладки
  */
 import CurrentGame from '../TabCurrentGame/CurrantGame.js';

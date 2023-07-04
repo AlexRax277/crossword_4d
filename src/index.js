@@ -7,6 +7,9 @@ import TabChoise from './Other/TabChoise.js';
 import Icon from './icon.png';
 import MainFoo from './TabNewGame/MainFoo.js';
 
+/**
+ * Добавление картинки "Куб" на стартовую вкладку.
+ */
 const iconBrand = document.getElementById('icon-brand');
 const image = new Image();
 image.src = Icon;
@@ -14,6 +17,9 @@ image.alt = 'Бесцветный трехмерный куб, распадаю�
 image.style.width = '30%';
 iconBrand.appendChild(image);
 
+/**
+ * Прослушка событий типа "клик" в части, касающейся навигационного меню.
+ */
 window.addEventListener('click', (e) => {
   const brand = document.querySelector('.navbar-brand');
   if (Array.from(e.target.classList).includes('nav-link') || e.target === brand) {

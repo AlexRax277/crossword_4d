@@ -1,3 +1,7 @@
+/**
+ * Функция, отвечающая за отображение данных во вкладке "текущая игра". Координирует в себе работу других скриптов.
+ */
+
 import ClearField from './ClearField.js';
 import CheckField from './CheckField.js';
 import CreateTable from './CreateTable.js';

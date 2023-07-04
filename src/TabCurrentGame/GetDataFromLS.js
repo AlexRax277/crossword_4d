@@ -1,3 +1,8 @@
+/**
+ * Функция парсинга данных о всех имеющихся словах из локального хранилища.
+ * @returns возвращает массив из объектов класса Word.
+ */
+
 const GetDataFromLS = () => {
   const data = [];
   if (localStorage.getItem('Data')) {

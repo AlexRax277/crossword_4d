@@ -1,3 +1,8 @@
+/**
+ * Функция очистки игрового поля. Всем словам в хранилище присваивается статус (solved: false).
+ * Кнопка неактивна, пока не загружено игровое поле.
+ */
+
 import GameInfo from '../TabInfo/GameInfo.js';
 import CurrentGame from './CurrantGame.js';
 

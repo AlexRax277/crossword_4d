@@ -1,10 +1,12 @@
 export default class Word {
   /**
      * Конструктор для создания экземпляра класса Word
+     * @param {int} id - уникальный номер слова
      * @param {string} answer - ответ на вопрос (разгадка)
      * @param {string} question - вопрос для разгадки
      * @param {int} countMatches - количество возможных пересечений
      * @param {list} matches - список пересечений
+     * @param {list} openSymbols - список открытых букв в слове
      * @param {int} applied - количество раз, когда это слово встечается в чужом списке matches
      * @param {boolean} solved - отгадано слово или нет
      */
