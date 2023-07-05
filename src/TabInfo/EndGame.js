@@ -34,6 +34,7 @@ const EndGame = () => {
         localStorage.clear();
         const field = document.getElementById('game-field');
         document.querySelector('.question').textContent = '';
+        document.querySelector('.clue').textContent = '';
         const form = document.getElementById('form').childNodes[0];
         form ? form.remove() : null;
         field ? field.remove() : null;
