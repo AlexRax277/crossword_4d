@@ -16,7 +16,6 @@ const CreateTable = () => {
     const tr = document.createElement('tr');
     tr.classList = 'word';
     tr.id = el.id;
-    tr.title = el.hashNum;
     const th = document.createElement('th');
     th.scope = 'row';
     th.classList = 'col-sm-1 text-center';

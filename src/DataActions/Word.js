@@ -28,13 +28,34 @@ export default class Word {
      * @param {Word} pair экземпляр класса Word, кандидат на включение в список matches
      */
   addMatch(pair) {
+    const matchesId = this.matches.map((match) => match.pairId);
+
+    /**
+     * Перебор следующего перечня небходим для того, чтобы отследить уже созданное пересечение в паре и провести обратную связь по тем же буквам.
+     */
+    let status = true;
+    pair.matches.forEach((pairMatch) => {
+      if (pairMatch.pairId === this.id && !matchesId.includes(pair.id)) {
+        this.matches.push({
+          symbol: pairMatch.symbol,
+          word: pair.answer,
+          pairId: pair.id,
+          numAnswer: pairMatch.numPair,
+          numPair: pairMatch.numAnswer,
+        });
+        status = false;
+        pair.applying();
+      }
+    });
+
+    /**
+     * Далее идет перебор по символам в слове и поиск оставшихся связей, удолветворяющих условиям.
+     */
     let shuffledSymbols = [...new Set(this.answer.split('').sort(() => Math.random() - 0.5))];
     const listMatchesSymbols = this.matches.map((e) => e.symbol);
     listMatchesSymbols.forEach((s) => {
       shuffledSymbols = shuffledSymbols.filter((sym) => sym !== s);
     });
-    const matchesId = this.matches.map((match) => match.pairId);
-
     for (let i = 0; i < shuffledSymbols.length; i++) {
       const currentSymbol = shuffledSymbols[i];
       const regexp = String(currentSymbol);
@@ -42,7 +63,7 @@ export default class Word {
 
       if (data && this.matches.length < this.countMatches
             && pair.applied < pair.countMatches
-            && !matchesId.includes(pair.id)) {
+            && !matchesId.includes(pair.id) && status) {
         this.matches.push({
           symbol: data[0],
           word: data.input,

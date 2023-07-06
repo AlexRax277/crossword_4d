@@ -9,15 +9,24 @@ import getRandomIntInclusive from './genRandomNum.js';
 import data from './questions.csv';
 import Word from './Word.js';
 
-// const testFoo = (d, list) => {
-//   const res = [];
-//   list.forEach((element) => {
-//     res.push(d[element]);
-//   });
-//   return res;
-// };
-// const myList = [5848, 1724, 2226, 382, 2137, 5341, 300, 3638, 6880, 4008];
-// const myData = testFoo(data, myList);
+const testFoo = (d, list) => {
+  const res = [];
+  list.forEach((element) => {
+    res.push(d[element]);
+  });
+  return res;
+};
+const myList = [1602,
+  2264,
+  5333,
+  1989,
+  5198,
+  5784,
+  7398,
+  3188,
+  3632,
+  3881];
+const myData = testFoo(data, myList);
 
 function GetData(fieldSize) {
   const getMatches = () => {
@@ -32,11 +41,11 @@ function GetData(fieldSize) {
   const res = [];
   let id = 1;
   for (let i = 1; i <= getMatches().countWords; i++) {
-    let word = data[getRandomIntInclusive(1, data.length - 1)];
-    // let word = myData[i - 1];
+    // let word = data[getRandomIntInclusive(1, data.length - 1)];
+    let word = myData[i - 1];
     if (!res.includes(word)) {
-      word = new Word(id, word.answer, word.question, getMatches().countMatches, data.indexOf(word) + 2);
-      // word = new Word(id, word.answer, word.question, getMatches().countMatches, myList[i - 1]);
+      // word = new Word(id, word.answer, word.question, getMatches().countMatches, data.indexOf(word) + 2);
+      word = new Word(id, word.answer, word.question, getMatches().countMatches, myList[i - 1]);
       res.push(word);
       id += 1;
     }
