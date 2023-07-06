@@ -23,6 +23,7 @@ const GameInfo = () => {
     });
 
     newString.innerHTML = `<th scope="row">${el.id}</th>
+                            <td>${el.hashNum}</td>
                             <td>${el.question}</td>
                             <td>${el.answer.length}</td>
                             <td>${openSymbols.join('; ')}</td>
