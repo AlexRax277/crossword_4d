@@ -6,6 +6,6 @@
 
 export default function AudioHandler(audio) {
   const sound = new Audio(audio);
-  sound.volume = 0.3;
+  sound.volume = 0.2;
   return sound.play();
 }

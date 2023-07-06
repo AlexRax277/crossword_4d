@@ -2,7 +2,9 @@
  * Функция прослушки событий на игровом поле (клик мыши и комбинация клавиш на клавиатуре) и вызова инпута вместе с различными сообщениями.
  */
 
+import AudioHandler from '../Other/AudioHandler.js';
 import Input from './Input.js';
+import wordSound from '../Audio/word.mp3';
 
 const DialogInfo = () => {
   const questionTag = document.querySelector('.question');
@@ -38,6 +40,7 @@ const DialogInfo = () => {
   words.forEach((word) => {
     word.addEventListener('click', () => {
       chooseWord(word);
+      AudioHandler(wordSound);
     });
   });
 
@@ -45,6 +48,7 @@ const DialogInfo = () => {
     const regex = /Digit[1-9]/;
     if (e.altKey && regex.test(e.code)) {
       chooseWord(Array.from(words).filter((el) => el.id === e.code.replace('Digit', ''))[0]);
+      AudioHandler(wordSound);
     }
   });
 };
