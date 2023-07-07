@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossword 4D</title>
+    <link rel="icon" type="image/jpg" href="03f061c5954a675cd905.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link rel="icon" href="icon.png"><script defer src="bundle.js"></script></head>
+<body style="font-family: Open Sans; font-size: 14px;">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <h2><a href="" class="navbar-brand" id="navbar-brand">Crossword 4D<span style="font-size: 12px;"> (v. 1.0)</span></a></h2>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+                aria-controls="navbarContent" aria-expanded="false" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto mb-2" role="tablist" id="v-pills-tab" style="font-size: 16px;">
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="new-game" data-bs-toggle="tab" role="tab">Новая игра</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="continue-game" data-bs-toggle="tab" role="tab">Текущая игра</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="info" data-bs-toggle="tab" role="tab">Прогресс</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="contacts" data-bs-toggle="tab" role="tab">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="newGame-modal">
+        <div class="modal-dialog" tabindex="0">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Внимание!</h4>
+              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-close"></button>
+            </div>
+            <div class="modal-body">
+              Для начала новой игры необходимо перезаписать данные текущей, весь прогресс удалится. Вы уверены?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" id="btn-modal-denied">Нет, продолжить.</button>
+              <button type="button" class="btn btn-light" id="btn-modal-accept">Да, начать новую.</button>
+            </div>
+          </div>
+        </div>
+    </div>    
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="tab-navbar-brand" role="tabpanel">
+            <div class="container-lg">
+                <div class="row">
+                    <div class="col-lg-3" id="greetings">
+                        <div class="accordion accordion-flush mt-2 text-center">
+                            <div class="accordion-item">
+                              <h3 class="accordion-header">
+                                <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Добро пожаловать в "Crossword 4D" – удивительный мир кроссвордов, где пересечения слов создают магию разгадывания!
+                                </button>
+                              </h3>
+                              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    Здесь мы открываем перед вами двери в захватывающий кроссвордный мир, где геометрия становится несущественной, а важен сам принцип веселья и разгадывания загадок. Наша игра предлагает вам обычный кроссворд с пересечениями между линиями, но без ограничений по направлениям.
+                                    Каждое пересечение слов – это ключ к разгадке других слов. Даже без визуальных ориентиров, вы сможете наслаждаться кроссвордами и улучшать свои логические и когнитивные навыки.
+                                    Так что отправляйтесь в увлекательное путешествие по "Crossword 4D" и откройте для себя непревзойденное сочетание развлечения и головоломок.
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9" id="icon-brand"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab-new-game" role="tabpanel">
+            <div class="container-sm">
+                <div class="row">
+                    <div class="col-lg-4">
+                            <h3 class="text-center">Выберите режим и размер поля.</h3>
+                            <p class="row" style="justify-content: space-between;">
+                                <span class="col-5 card text-center" data-bs-toggle="collapse" href="#Collapse1" role="button" aria-expanded="false" aria-controls="Collapse1">Правила простого режима.</span>
+                                <span class="col-5 card text-center" data-bs-toggle="collapse" href="#Collapse2" role="button" aria-expanded="false" aria-controls="Collapse2">Правила реалистичного режима.</span>
+                            </p>
+                            <div class="row">
+                                <div class="col-6">
+                                  <div class="collapse multi-collapse" id="Collapse1">
+                                    <div class="card card-body">
+                                        <p>
+                                            Этот режим можно описать как гибрид кроссворда и викторины.
+                                            Если Вам удастся верно угадать слово, Вы получите оповещение об этом.
+                                        </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="collapse multi-collapse" id="Collapse2">
+                                    <div class="card card-body">
+                                        <p> 
+                                            В этом режиме Вам предоставлена полная свобода действий, как на листе газеты. 
+                                            Вы можете переписывать слова и исправлять их столько раз, сколько захотите. Когда все поля будут заполнены, 
+                                            у Вас появится возможность проверить, разгаданы все слова в кроссворде правильно или нет.
+                                        </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        <div class="mt-2" id="type-game">
+                            <div>Режим:</div>
+                            <div class="form-check" >
+                                <input class="form-check-input" type="radio" name="game-mode" id="simple-mode" checked>
+                                <label class="form-check-label" for="simple-mode">
+                                Простой
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="game-mode" id="real-mode">
+                                <label class="form-check-label" for="real-mode">
+                                Реалистичный
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-2">Размер поля:</div>
+                        <select class="form-select" id="plaing-field">
+                            <option selected value="1">Меленький - 10 слов</option>
+                            <option value="2">Средний - 20 слов</option>
+                            <option value="3">Большой - 30 слов</option>
+                        </select>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-outline-secondary mt-2 me-md-2" id="accept-game-settings">Принять</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab-continue-game" role="tabpanel">
+           <div class="container-sm">
+                <div class="row position-relative">
+                    <h3>Игровое поле</h3>
+                    <div class="col-5 mt-5">
+                        <div class="tab-cont col-auto">    
+                        </div>
+                    </div>
+                    <div class="dialog col-3 position-fixed top-20 start-50">
+                        <div class="dialog-info" id="dialog-info">
+                            <h4 class="question col mt-2"></h4>
+                            <span class="clue clue col mt-2"></span>
+                        </div>
+                        <form class="row g-3 mt-3" id="form">
+                        </form>
+                    </div>
+                    <div class="col-auto position-fixed mt-4 end-50">
+                        <button type="button" class="btn btn-outline-secondary btn-sm disabled float-end pb-pt-0" id="clear-field">
+                            Очистить поле
+                            <span class="invisible position-absolute">Удаление всех введенных значений</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm disabled float-end pb-pt-0" id="check-field" style="margin-right: 5px;">
+                            Проверить значения
+                            <span class="invisible position-absolute">Проверка всех значений на соответствие</span>
+                        </button>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <div class="tab-pane fade" id="tab-info" role="tabpanel">
+            <div class="container-sm">
+                <div class="row">
+                    <div class="col-auto-sm mt-2" style="width: 100%">
+                        <h3>Игровой прогресс</h3>
+                        <div class="progress" role="progressbar" aria-label="progressbar-label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-success" id="progress" style="width: 0%">0%</div>
+                        </div>
+                        <div class="invis"></div>
+                        <h3 class="mt-2">Информация по игре</h3>
+                        <table class="table table-success table-striped align-middle text-center">
+                            <thead>
+                                <tr>
+                                <th scope="col" class="col-1">№<span style="font-size: 8px;">(БД)</span></th>
+                                <th scope="col" class="col-4">Вопрос</th>
+                                <th scope="col" class="col-2">Количество букв</th>
+                                <th scope="col" class="col-4">Открытые буквы</th>
+                                <th scope="col" class="col-1">Ответ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab-contacts" role="tabpanel">
+            <div class="container-sm">
+                 <div class="row">
+                     <div class="col-sm-auto mt-3">
+                        <div>Остались предложения или пожелания по улучшению приложения?</div>
+                        <div class="mt-2 mb-4">Связаться с разработчиком можно одним из удобных для Вас способов:</div>
+                        <div>
+                            <a class="contact" href="mailto:rakovchen@list.ru"><img src="https://i.postimg.cc/FFcShQgr/aef4c675-840d-4efc-bf20-9d837e0fc8e8-800.png" style="width: 30px; margin-right: 15px;" alt="mail"></a>
+                            <a class="contact" href="https://api.whatsapp.com/send?phone=79811210961"><img src="https://avatars.mds.yandex.net/i?id=8fb1f5944a50bff45aca545334c7bb09ed545456-9245818-images-thumbs&n=13" style="width: 30px; margin-right: 15px;" alt="whatsapp"></a>
+                            <a class="contact" href="https://telegram.me/Alexander_Rakovchen"><img src="https://efraimtraders.com/wp-content/uploads/2022/03/Telegram-circular-icon-vector-PNG-1024x1024.png" style="width: 30px;" alt="telegram"></a>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+         </div>
+    </div>
+    <div class="modal fade" id="endGame-modal">
+        <div class="modal-dialog" tabindex="0">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Поздравляем с победой! </h4>
+              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-end-close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Нажмите "Продолжить" для начала новой игры с теми же параметрами.</p> 
+                <p>Нажмите "Завершить", чтобы просмотреть результаты текущей игры. </p> 
+                <p>Чтобы изменить режим игры и/или размер поля, перейдите во вкладку "Новая игра" после закрытия окна. Удачи!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" id="btn-modal-end-denied">Завершить</button>
+              <button type="button" class="btn btn-light" id="btn-modal-end-accept">Продолжить</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script data-goatcounter="https://crossword4d.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
