@@ -9,24 +9,32 @@ import getRandomIntInclusive from './genRandomNum.js';
 import data from './questions.csv';
 import Word from './Word.js';
 
-const testFoo = (d, list) => {
-  const res = [];
-  list.forEach((element) => {
-    res.push(d[element]);
-  });
-  return res;
-};
-const myList = [1602,
-  2264,
-  5333,
-  1989,
-  5198,
-  5784,
-  7398,
-  3188,
-  3632,
-  3881];
-const myData = testFoo(data, myList);
+/**
+ * Тестовая функция, для воспроизведения игрового поля пользователя.
+ * @param {*} d - общая БД;
+ * @param {*} list - список из номеров (порядковых) по БД;
+ * @returns массив из соответствющих слов.
+ * Внимание! Индекс слова в общем массиве (или БД) - это его порядковый номер + 2.
+ * Необходимо также задействовать строки 53 и 56 настоящего скрипта вместо строк 52 и 55 соответственно.
+ */
+// const testFoo = (d, list) => {
+//   const res = [];
+//   list.forEach((element) => {
+//     res.push(d[element]);
+//   });
+//   return res;
+// };
+// const myList = [1602,
+//   2264,
+//   5333,
+//   1989,
+//   5198,
+//   5784,
+//   7398,
+//   3188,
+//   3632,
+//   3881];
+// const myData = testFoo(data, myList);
 
 function GetData(fieldSize) {
   const getMatches = () => {
@@ -41,11 +49,11 @@ function GetData(fieldSize) {
   const res = [];
   let id = 1;
   for (let i = 1; i <= getMatches().countWords; i++) {
-    // let word = data[getRandomIntInclusive(1, data.length - 1)];
-    let word = myData[i - 1];
+    let word = data[getRandomIntInclusive(1, data.length - 1)];
+    // let word = myData[i - 1];
     if (!res.includes(word)) {
-      // word = new Word(id, word.answer, word.question, getMatches().countMatches, data.indexOf(word) + 2);
-      word = new Word(id, word.answer, word.question, getMatches().countMatches, myList[i - 1]);
+      word = new Word(id, word.answer, word.question, getMatches().countMatches, data.indexOf(word) + 2);
+      // word = new Word(id, word.answer, word.question, getMatches().countMatches, myList[i - 1]);
       res.push(word);
       id += 1;
     }

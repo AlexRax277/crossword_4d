@@ -22,8 +22,7 @@ const GameInfo = () => {
       openSymbols.push(`${symbol[0]}-ая буква ${symbol[1]}`);
     });
 
-    newString.innerHTML = `<th scope="row">${el.id}</th>
-                            <td>${el.hashNum}</td>
+    newString.innerHTML = `<th scope="row">${el.id}<span style="font-size: 8px">(${el.hashNum})</span></th>
                             <td>${el.question}</td>
                             <td>${el.answer.length}</td>
                             <td>${openSymbols.join('; ')}</td>
